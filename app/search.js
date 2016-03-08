@@ -1,5 +1,22 @@
-var emojilib = require('emojilib').lib
-var emojikeys = require('emojilib').ordered
+// var emojilib = require('emojilib').lib
+// var emojikeys = require('emojilib').ordered
+
+var emojilib = {
+  'lenny': {
+    'keywords': ['face', 'smile', 'happy', 'joy'],
+    'char': '( ͡° ͜ʖ ͡°)',
+    'category': 'people'
+  },
+  'shrug': {
+    'keywords': ['face', 'happy', 'smile', 'joy'],
+    'char': '¯\\_(ツ)_/¯',
+    'category': 'people'
+  }
+}
+
+var emojikeys = ['lenny', 'shrug']
+
+
 var clipboard = require('clipboard')
 var ipc = require('electron').ipcRenderer
 var index = buildIndex()
@@ -119,7 +136,7 @@ function search (query) {
 function generateMarkup (emojiNameArray) {
   return emojiNameArray.map(function (name) {
     var unicode = (emojilib[name]['char'] || '--')
-    var result = '<button type="button" class="emoji" aria-label="' + name + '">' + unicode + '</button>'
+    var result = '<button type="button" class="emoji" aria-label="" + name + "">' + unicode + '</button>';
     return result
   }).join('')
 }
